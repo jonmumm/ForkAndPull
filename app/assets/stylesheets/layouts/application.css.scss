@@ -1,0 +1,39 @@
+.container {
+  @include outer-container;
+}
+
+.header {
+  h1 {
+    display: none;
+  }
+
+  .logo {
+    @include retina-image(logo, 206px 53px);
+    width: 206px;
+    height: 53px;
+    background-repeat: no-repeat;
+    margin: 20px;
+  }
+}
+
+.navigation {
+  background: black;
+  color: white;
+  text-align: center;
+  font-weight: bold;
+  font-size: 12px;
+
+  ul {
+    list-style-type: none;
+    margin: 10px;
+  }
+
+  li {
+    display: inline-block;
+    margin-right: 20px;
+
+    &:last-child {
+      margin-right: 0px;
+    }
+  }
+}
