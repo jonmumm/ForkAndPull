@@ -79,4 +79,13 @@ ForkAndPull::Application.configure do
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.asset_host = "//s3.amazonaws.com/#{ENV['FOG_DIRECTORY']}"
   config.action_mailer.default_url_options = { :host => "#{ENV['DEFAULT_HOST']}"}
+
+  config.paperclip_defaults = {
+    :storage => :s3,
+    :bucket => ENV['FOG_DIRECTORY'],
+    :s3_credentials => {
+      :access_key_id => ENV['AWS_ACCESS_KEY_ID'],
+      :secret_access_key => ENV['AWS_SECRET_ACCESS_KEY']
+    }
+  }
 end
