@@ -1,1 +1,1 @@
-::GIBBON = Gibbon.new "14a5d138dc96ad75ddc7a970b06d712b-us4"
+::GIBBON = Gibbon.new ENV['MAILCHIMP_API_KEY']
