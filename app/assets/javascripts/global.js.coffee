@@ -21,7 +21,7 @@ $ ->
         $("#donation_amount").val(amount * 100)
         $(".new_donation").submit()
 
-  #$("img").hisrc()
+  $("img").hisrc()
 
   setTimeout =>
     $("body").addClass "body-loaded"
