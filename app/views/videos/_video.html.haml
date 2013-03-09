@@ -1,0 +1,22 @@
+.content
+  .video
+    <iframe src="https://www.youtube.com/embed/3DY4Uk_XapE?rel=0" frameborder="0" allowfullscreen></iframe>
+  .info
+    %h2= @video.title
+    %p= @video.description
+
+    %ul.resources
+      - @video.resources.each do |resource|
+        %li
+          = link_to resource.name, resource.url
+    .categories
+      - @video.categories.each do |category|
+        = (category != @video.categories.last) ? "#{category.name}," : category.name
+    .date= @video.created_at.strftime("%B %d %Y")
+
+  .more
+
+:coffeescript
+  new FP.Views.Video
+    el: $(".show .content")
+    model: new FP.Models.Video #{ render(template: "videos/base.json.rabl") }

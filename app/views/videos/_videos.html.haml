@@ -1,0 +1,18 @@
+.items
+  - @videos.each do |video|
+    .item{:"data-id" => video.id, :class => "#{video.categories.map { |c| c.slug }.join(" ")}"}
+      = link_to(responsive_image_tag(video.preview(:medium), :"2x" => video.preview(:retina_medium)), video)
+      .info
+        %h4= video.title
+        %p
+          #{video.description}
+          %br
+          = link_to "Watch", video
+      .metadata
+        .categories
+          - video.categories.each do |category|
+            = (category != video.categories.last) ? "#{category.name}," : category.name
+
+        .date= video.created_at.strftime("%B %d %Y")
+
+= javascript_include_tag "videos/index"

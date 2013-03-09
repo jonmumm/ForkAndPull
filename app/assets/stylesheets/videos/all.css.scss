@@ -1,0 +1,94 @@
+body {
+  .items {
+    margin-top: 18px;
+    overflow: visible !important;
+  }
+
+  .item {
+    @include box-shadow($light-shadow);
+    border-radius: 3px;
+    overflow: hidden;
+    background: white;
+    margin-bottom: 18px;
+
+    img {
+      width: 100%;
+    }
+
+    p {
+      margin-bottom: 0px;
+    }
+
+    h4 {
+      text-transform: uppercase;
+      margin: 0px;
+    }
+
+    .info, .metadata {
+      padding: 20px;
+    }
+
+    .info {
+      border-bottom: 1px solid #f3f3f3;
+    }
+  }
+
+  .categories, .date {
+    font-size: 12px;
+  }
+
+  .categories {
+    font-weight: bold;
+    margin-bottom: 4px;
+  }
+
+
+  .show {
+    .title-bar {
+      @include box-shadow($light-shadow);
+      margin: 20px 0px;
+    }
+
+    .gist {
+      font-size: 14px;
+    }
+
+    .more, .info {
+      padding: 20px;
+    }
+
+    .more {
+      padding-bottom: 2px;
+    }
+
+    .info {
+      border-bottom: 1px solid #f3f3f3;
+    }
+
+    ul {
+      list-style: none;
+      padding: 0px;
+    }
+
+    .content {
+      background: white;
+      @include box-shadow($light-shadow);
+      border-radius: 3px;
+      overflow: hidden;
+      margin: 20px 0px;
+      min-height: 20px !important;
+    }
+
+    h2 {
+      margin: 0px;
+      text-transform: uppercase;
+    }
+  }
+
+  .content {
+    .video > * {
+      width: 100%;
+      height: 100%;
+    }
+  }
+}

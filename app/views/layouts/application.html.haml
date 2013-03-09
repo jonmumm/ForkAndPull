@@ -5,30 +5,72 @@
     %title
       = yield(:title) || "Fork & Pull"
     %meta{"http-equiv"=>"Content-Type", :content=>"text/html; charset=utf-8"}/
+    %meta{name: "viewport", content: "width=device-width"}
     = stylesheet_link_tag :application
     = javascript_include_tag :application
     = csrf_meta_tag
     = yield(:head)
 
-  %body{:class => "application #{'devise' if devise_controller?} #{params[:controller]} #{params[:action]}"}
+  %body{:class => "application #{'devise' if devise_controller?} #{params[:controller]}"}
     .header
       .container
         %h1 Fork & Pull
-        .logo
+        %a{href: root_path}
+          .logo
+          .subtitle Bit-sized screencasts on open source software
 
     .navigation
       .container
         %ul
-          %li CSS
-          %li JavaScript
-          %li iOS
-          %li Rails
-          %li Tools
+          - @categories.each do |category|
+            %li 
+              = link_to category.name, category
 
     .main
       .container
+        - if flash[:notice]
+          .notice
+            %p= flash[:notice]
+        - if flash[:error]
+          .error
+            %p= flash[:error]
         = yield
 
     .footer
       .container
-        %h3 About
+        .section.about
+          %h3 About
+          %p Fork & Pull is a free service by #{ link_to "@jonmumm", "http://www.twitter.com/jonmumm" } to promote and teach open source software via 3-5 minute instructional screncasts.
+
+        .section.donate
+          %h3 Donate
+          %p
+            If you've found my videos useful and want to support me so I can create more, I'd really appreciate your donation:
+          = form_for Donation.new do |f|
+            = f.hidden_field :token
+            = f.hidden_field :amount
+          %ul
+            %li 
+              = link_to "$5", "#", :"data-amount" => 5
+            %li 
+              = link_to "$10", "#", :"data-amount" => 10
+            %li 
+              = link_to "$20", "#", :"data-amount" => 20
+            %li 
+              = link_to "$50", "#", :"data-amount" => 50
+
+        .section.subscribe
+          %h3 Subscribe
+          %p
+            = link_to "Subscribe on YouTube", "http://www.youtube.com/subscription_center?add_user_id=U0RzlkTvaYLwetTihxpAiQ"
+            or receive emails when I release new videos:
+
+          = form_for Subscriber.new do |f|
+            = f.email_field :email, :placeholder => "Enter your email and press enter"
+
+      .closer
+        .container
+          Designed and developed with
+          %span{style: "color: red"} ♥
+          in San Francisco.
+          #{ link_to "Contribute", "http://github.com/jonmumm/ForkAndPull" }.

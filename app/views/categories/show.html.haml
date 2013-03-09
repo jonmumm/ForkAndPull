@@ -1,0 +1,9 @@
+- title "Bite-sized screencasts for open source software"
+
+.show
+
+= render "videos/videos"
+
+:coffeescript
+  jQuery ->
+    fp.views.grid.filter "#{@category.slug}"

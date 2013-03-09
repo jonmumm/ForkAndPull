@@ -1,8 +1,22 @@
+body {
+  background: asset-data-url($light-bg-img);
+}
+
 .container {
   @include outer-container;
 }
 
 .header {
+  background: white;
+  .container {
+    padding-top: 20px;
+    padding-bottom: 20px;
+
+    @include media($tablet) {
+      padding: 20px;
+    }
+  }
+
   h1 {
     display: none;
   }
@@ -12,28 +26,128 @@
     width: 206px;
     height: 53px;
     background-repeat: no-repeat;
-    margin: 20px;
+    margin-left: 1px;
+  }
+
+  a {
+    text-decoration: none;
+  }
+
+  .subtitle {
+    color: #999;
+    margin-top: 8px;
   }
 }
 
 .navigation {
-  background: black;
-  color: white;
+  @extend .dark-bg-img;
+  @include box-shadow($dark-inset-shadow);
   text-align: center;
   font-weight: bold;
   font-size: 12px;
 
+  a {
+    color: white;
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
   ul {
     list-style-type: none;
     margin: 10px;
+    padding: 0px;
   }
 
   li {
     display: inline-block;
-    margin-right: 20px;
+    padding: 0px 10px;
+  }
+}
 
-    &:last-child {
-      margin-right: 0px;
+.main {
+  min-height: 382px;
+}
+
+.footer {
+  @extend .dark-bg-img;
+  @include box-shadow($dark-inset-shadow);
+  color: white;
+  padding-top: 20px;
+
+  p {
+    color: $dark-text-color;
+  }
+
+  .section {
+    @include span-columns(4);
+
+    @include media($tablet) {
+      @include span-columns(4);
+      padding: 0px 20px;
     }
+
+    @include media($mobile) {
+      @include span-columns(8);
+    }
+  }
+
+  h3 {
+    text-transform: uppercase;
+  }
+
+  .donate {
+    ul {
+      list-style: none;
+      padding: 0px;
+    }
+
+    li {
+      display: inline-block;
+      margin-right: 14px;
+    }
+  }
+
+  .closer {
+    margin-top: 28px;
+    background: rgba(0, 0, 0, 0.6);
+    font-size: 12px;
+    padding: 12px 0px;
+
+    @include media($tablet) {
+      padding: 12px 20px;
+    }
+  }
+}
+
+.notice, .error {
+  text-align: center;
+  border-radius: 3px;
+  margin-top: 20px;
+
+  p {
+    margin: 0px;
+    padding: 20px;
+    color: white;
+  }
+}
+
+.notice {
+  background: #333;
+  @include box-shadow(inset 0px 1px 3px 1px rgb(0, 0, 0));
+}
+
+.error {
+  background: rgb(175,47,47);
+  @include box-shadow(inset 0px 1px 3px 1px rgba(85, 0, 0, 0.56));
+}
+
+.loader {
+  padding: 20px;
+
+  > div {
+    margin: 0 auto;
   }
 }

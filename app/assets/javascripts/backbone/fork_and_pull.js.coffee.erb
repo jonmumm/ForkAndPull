@@ -1,0 +1,19 @@
+#= require_self
+#= require_tree ./templates
+#= require_tree ./models
+#= require_tree ./views
+#= require_tree ./routers
+
+window.FP =
+  Models: {}
+  Collections: {}
+  Routers: {}
+  Views: {}
+  Config: {}
+  Assets: {}
+
+window.fp = 
+  views: {}
+
+FP.Config.StripePublishableKey = "<%= ENV['STRIPE_PUBLISHABLE_KEY'] %>";
+FP.Assets.Avatar = "<%= asset_path('fork_and_pull@2x.png', :only_path => false) %>";

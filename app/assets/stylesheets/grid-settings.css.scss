@@ -1,0 +1,7 @@
+@import "neat-helpers";
+
+$max-width: 960px;
+$grid-column: 12;
+
+$mobile: new-breakpoint(max-width 480px 8);
+$tablet: new-breakpoint(max-width 768px 8);
