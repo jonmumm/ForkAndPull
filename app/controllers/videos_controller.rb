@@ -8,7 +8,6 @@ class VideosController < ApplicationController
   end
 
   def show
-    sleep(3)
     @video = Video.find params[:id]
   end
 
