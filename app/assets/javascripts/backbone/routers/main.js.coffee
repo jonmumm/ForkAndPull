@@ -28,7 +28,6 @@ class FP.Routers.Main extends Backbone.Router
 
   root: ->
     @clear ->
-      console.log "reset"
       fp.views.grid.reset()
     , ".navigation", 800
 
