@@ -19,6 +19,11 @@ class FP.Routers.Main extends Backbone.Router
         # Instruct Backbone to trigger routing events
         @navigate url, { trigger: true }
 
+        # Set new page title if there is one
+        name = $(event.currentTarget).attr "data-name"
+        if name
+          document.title = "#{name} | Fork & Pull"
+
         event.preventDefault()
 
   routes:
@@ -27,6 +32,7 @@ class FP.Routers.Main extends Backbone.Router
     "categories/:id": "categories"
 
   root: ->
+    document.title = "Bite-sized screencasts for open source software | Fork & Pull"
     @clear ->
       fp.views.grid.reset()
     , ".navigation", 800
@@ -47,6 +53,7 @@ class FP.Routers.Main extends Backbone.Router
       model.fetch
         dataType: "script"
         success: (model) ->
+          document.title = "#{model.get("title")} | Fork & Pull"
 
   clear: (callback, scrollTo = ".main", timeout = 400) ->
     if $(".show .content").length > 0
