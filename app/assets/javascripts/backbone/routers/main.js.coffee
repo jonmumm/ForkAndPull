@@ -52,8 +52,6 @@ class FP.Routers.Main extends Backbone.Router
       model = new FP.Models.Video { id: id }
       model.fetch
         dataType: "script"
-        success: (model) ->
-          document.title = "#{model.get("title")} | Fork & Pull"
 
   clear: (callback, scrollTo = ".main", timeout = 400) ->
     if $(".show .content").length > 0

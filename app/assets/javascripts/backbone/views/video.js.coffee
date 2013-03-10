@@ -1,5 +1,6 @@
 class FP.Views.Video extends Backbone.View
   initialize: ->
+    document.title = "#{@model.get("title")} | Fork & Pull"
     $(window).smartresize =>
       @resize()
 
